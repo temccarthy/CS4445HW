@@ -22,7 +22,7 @@ def Terms_and_Conditions():
     '''
     #*******************************************
     # CHANGE HERE: if you have read and agree with the term above, change "False" to "True".
-    Read_and_Agree = False
+    Read_and_Agree = True
     #*******************************************
     return Read_and_Agree
 
@@ -41,7 +41,7 @@ def Terms_and_Conditions():
 def compute_BA(H, AB):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    BA = H/AB
     #########################################
     return BA
     #-----------------
@@ -70,7 +70,7 @@ def compute_BA(H, AB):
 def compute_OBP(H, AB, BB, HBP, SF):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    OBP = (H+BB+HBP)/(AB+BB+HBP+SF)
     #########################################
     return OBP
     #-----------------
@@ -175,7 +175,7 @@ def compute_SLG(TB, AB):
     ---- Outputs: --------
         * RC: the expected number of runs created by a team, a float scalar.
     ---- Hints: --------
-        * There are multiple versions of the 'runs created' formula, here we are using the basic version: ((Hits + Walks) x Total Bases) ÷ (At Bats + Walks). 
+        * There are multiple versions of the 'runs created' formula, here we are using the basic version: ((Hits + Walks) x Total Bases) / (At Bats + Walks). 
         * This problem can be solved using 1 line(s) of code.
 '''
 #---------------------
