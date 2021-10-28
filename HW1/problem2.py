@@ -160,8 +160,7 @@ def filter_height(X, t):
 def group_sum(X, k):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    Y = X.groupby(k).agg('sum')
-    Y = Y.reset_index()
+    Y = X.groupby(k).agg('sum').reset_index()
     #########################################
     return Y
     #-----------------
