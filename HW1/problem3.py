@@ -24,7 +24,7 @@ from problem2 import *
 def load_batting(filename='moneyball_batting.csv'):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X = pd.read_csv(filename)
     #########################################
     return X
     #-----------------
@@ -50,7 +50,7 @@ def load_batting(filename='moneyball_batting.csv'):
 def filter_batting(X, year):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X1 = X[X.yearID == year]
     #########################################
     return X1
     #-----------------
@@ -93,7 +93,7 @@ def filter_batting(X, year):
 def group_batting(X1):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X2 = X1.groupby()
     #########################################
     return X2
     #-----------------

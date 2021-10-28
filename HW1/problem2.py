@@ -36,7 +36,7 @@ import pandas as pd
 def dataframe():
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X = pd.DataFrame([[1, 4], [2, 5], [3, 6]], columns=['heights', 'widths'])
     #########################################
     return X
     #-----------------
@@ -61,7 +61,7 @@ def dataframe():
 def load_csv(filename='A.csv'):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X = pd.read_csv(filename)
     #########################################
     return X
     #-----------------
@@ -85,7 +85,7 @@ def load_csv(filename='A.csv'):
 def save_csv(X, filename='A.csv'):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X.to_csv(filename, index=False)
     #########################################
     #-----------------
     '''  
@@ -121,7 +121,7 @@ def save_csv(X, filename='A.csv'):
 def filter_height(X, t):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    Xt = X[X.heights >= t]
     #########################################
     return Xt
     #-----------------
@@ -160,7 +160,8 @@ def filter_height(X, t):
 def group_sum(X, k):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    Y = X.groupby(k).agg('sum')
+    Y = Y.reset_index()
     #########################################
     return Y
     #-----------------
@@ -221,7 +222,7 @@ def group_sum(X, k):
 def merge(X, Y, k):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    J = pd.merge(X, Y, on=k)
     #########################################
     return J
     #-----------------
@@ -264,7 +265,7 @@ def merge(X, Y, k):
 def sort_values(X, k):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    Y = X.sort_values(k, ascending=False)
     #########################################
     return Y
     #-----------------
@@ -304,7 +305,7 @@ def sort_values(X, k):
 def divide(X, k, l):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    Y = X[k] / X[l]
     #########################################
     return Y
     #-----------------
@@ -344,7 +345,7 @@ def divide(X, k, l):
 def insert_column(X, y, k):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X[k] = y
     #########################################
     #-----------------
     '''  
