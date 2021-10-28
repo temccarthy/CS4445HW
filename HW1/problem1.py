@@ -99,7 +99,7 @@ def compute_OBP(H, AB, BB, HBP, SF):
 def compute_B1(H, B2, B3, HR):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    B1 = H - (B2 + B3 + HR)
     #########################################
     return B1
     #-----------------
@@ -127,7 +127,7 @@ def compute_B1(H, B2, B3, HR):
 def compute_TB(B1, B2, B3, HR):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    TB = B1 + 2*B2 + 3*B3 + 4*HR
     #########################################
     return TB
     #-----------------
@@ -153,7 +153,7 @@ def compute_TB(B1, B2, B3, HR):
 def compute_SLG(TB, AB):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    SLG = TB/AB
     #########################################
     return SLG
     #-----------------
@@ -182,7 +182,7 @@ def compute_SLG(TB, AB):
 def compute_runs(H, BB, TB, AB):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    RC = ((H+BB)*TB) / (AB+BB)
     #########################################
     return RC
     #-----------------
@@ -208,7 +208,7 @@ def compute_runs(H, BB, TB, AB):
 def compute_wins(RC, RA):
     #########################################
     ## INSERT YOUR CODE HERE (4 points)
-    
+    W = (RC**2) / (RC**2 + RA**2)
     #########################################
     return W
     #-----------------
