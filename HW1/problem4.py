@@ -21,7 +21,7 @@ import pandas as pd
 def compute_players_BA(X6):
     #########################################
     ## INSERT YOUR CODE HERE (4 points)
-    
+    X6['BA'] = X6.H/X6.AB
     #########################################
     #-----------------
     '''  
@@ -47,7 +47,7 @@ def compute_players_BA(X6):
 def rank_players_BA(X7):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    R1 = X7.sort_values('BA', ascending=False)
     #########################################
     return R1
     #-----------------
@@ -70,7 +70,7 @@ def rank_players_BA(X7):
 def compute_players_OBP(X7):
     #########################################
     ## INSERT YOUR CODE HERE (4 points)
-    
+    X7['OBP'] = (X7.H+X7.BB+X7.HBP)/(X7.AB+X7.BB+X7.HBP+X7.SF)
     #########################################
     #-----------------
     '''  
@@ -96,7 +96,7 @@ def compute_players_OBP(X7):
 def rank_players_OBP(X8):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    R2 = X8.sort_values('OBP', ascending=False)
     #########################################
     return R2
     #-----------------
@@ -119,7 +119,7 @@ def rank_players_OBP(X8):
 def compute_players_1B(X8):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X8['1B'] = X8.H - (X8['2B'] + X8['3B'] + X8.HR)
     #########################################
     #-----------------
     '''  
@@ -142,7 +142,7 @@ def compute_players_1B(X8):
 def compute_players_TB(X9):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X9['TB'] = X9['1B'] + 2*X9['2B'] + 3*X9['3B'] + 4*X9.HR
     #########################################
     #-----------------
     '''  
@@ -165,7 +165,7 @@ def compute_players_TB(X9):
 def compute_players_SLG(X10):
     #########################################
     ## INSERT YOUR CODE HERE (4 points)
-    
+    X10['SLG'] = X10.TB/X10.AB
     #########################################
     #-----------------
     '''  
@@ -191,7 +191,7 @@ def compute_players_SLG(X10):
 def rank_players_SLG(X11):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    R3 = X11.sort_values('SLG', ascending=False)
     #########################################
     return R3
     #-----------------
