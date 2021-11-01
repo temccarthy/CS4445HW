@@ -1,7 +1,7 @@
 import random
 from flask import Flask
 from jinja2 import Template,Environment,FileSystemLoader
-app= Flask(__name__) # create an app for the website
+app = Flask(__name__) # create an app for the website
 # Note: please don't import any new package. You should solve this problem using only the package(s) above.
 #-------------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ def Terms_and_Conditions():
     '''
     #*******************************************
     # CHANGE HERE: if you have read and agree with the term above, change "False" to "True".
-    Read_and_Agree = False
+    Read_and_Agree = True
     #*******************************************
     return Read_and_Agree
 
@@ -42,7 +42,7 @@ def Terms_and_Conditions():
 def hello_page():
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    webpage = "Hello World!"
     #########################################
     return webpage
     #-----------------
@@ -69,7 +69,7 @@ def hello_page():
 def rand_page():
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    webpage = "{0}".format(random.random())
     #########################################
     return webpage
     #-----------------
@@ -99,7 +99,7 @@ def rand_page():
 def vote(ID):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    webpage = "Thank you for voting {0}".format(ID)
     #########################################
     return webpage
     #-----------------
@@ -126,7 +126,7 @@ def vote(ID):
 def create_template():
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    t = Template("Hello, {{username}}!")
     #########################################
     return t
     #-----------------
@@ -152,7 +152,11 @@ def create_template():
 def load_template(filename):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+
+    loader = FileSystemLoader(".")
+    e = Environment(loader=loader)
+    t = e.get_template(filename)
+
     #########################################
     return t
     #-----------------
