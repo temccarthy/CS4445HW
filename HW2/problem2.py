@@ -28,7 +28,7 @@ data = [] # create an empty list, we will use this list to store all the user vo
 def sample_pair(n):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    A, B = random.sample(range(0, n), 2)
     #########################################
     return A, B
     #-----------------
@@ -53,7 +53,8 @@ def sample_pair(n):
 def facemash():
     #########################################
     ## INSERT YOUR CODE HERE (10 points)
-    
+    template
+    webpage = template.
     #########################################
     return webpage
     #-----------------
