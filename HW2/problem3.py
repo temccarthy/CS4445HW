@@ -142,7 +142,11 @@ def compute_ratings(G, n, K=16):
         SA,SB = 1,0 # the game result: Player A wins, Player B loses
         #########################################
         ## INSERT YOUR CODE HERE (5 points)
-        RA, RB = R
+        RA, RB = R[A], R[B]  # extract current rank
+        EA = compute_EA(RA, RB)
+        EB = compute_EB(EA)
+        newRA, newRB = update_RA(RA, SA, EA, K), update_RB(RB, SB, EB, K)
+        R[A], R[B] = newRA, newRB
         #########################################
     return R
     #-----------------
