@@ -24,7 +24,7 @@ import pandas as pd
 def compute_EA(RA, RB):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    EA = 1 / (1 + 10**((RB - RA) / 400))
     #########################################
     return EA
     #-----------------
@@ -49,7 +49,7 @@ def compute_EA(RA, RB):
 def compute_EB(EA):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    EB = 1 - EA
     #########################################
     return EB
     #-----------------
@@ -77,7 +77,7 @@ def compute_EB(EA):
 def update_RA(RA, SA, EA, K=16):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    RA = RA + K*(SA-EA)
     #########################################
     return RA
     #-----------------
@@ -105,7 +105,7 @@ def update_RA(RA, SA, EA, K=16):
 def update_RB(RB, SB, EB, K=16):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    RB = RB + K * (SB - EB)
     #########################################
     return RB
     #-----------------
@@ -142,7 +142,7 @@ def compute_ratings(G, n, K=16):
         SA,SB = 1,0 # the game result: Player A wins, Player B loses
         #########################################
         ## INSERT YOUR CODE HERE (5 points)
-    
+        RA, RB = R
         #########################################
     return R
     #-----------------

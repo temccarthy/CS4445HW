@@ -53,8 +53,8 @@ def sample_pair(n):
 def facemash():
     #########################################
     ## INSERT YOUR CODE HERE (10 points)
-    template
-    webpage = template.
+    A, B = sample_pair(8)
+    webpage = template.render(A=A, B=B)
     #########################################
     return webpage
     #-----------------
@@ -90,7 +90,8 @@ def facemash():
 def vote(win_id, lose_id):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    data.append((win_id, lose_id))
+    webpage = redirect(url_for("facemash"))
     #########################################
     return webpage
     #-----------------
