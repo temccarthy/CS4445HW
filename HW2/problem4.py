@@ -35,7 +35,7 @@ from problem3 import compute_ratings
 def load_G(filename_G='ncaa_games.csv'):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    G = pd.read_csv(filename_G)
     #########################################
     return G
     #-----------------
@@ -71,7 +71,7 @@ def load_G(filename_G='ncaa_games.csv'):
 def load_teams(filename_teams='ncaa_teams.csv'):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    T = pd.read_csv(filename_teams)
     #########################################
     return T
     #-----------------
@@ -108,7 +108,9 @@ def load_teams(filename_teams='ncaa_teams.csv'):
 def compute_elo(G, n, K=16):
     #########################################
     ## INSERT YOUR CODE HERE (10 points)
-    
+
+    R = pd.DataFrame(compute_ratings(G, n, K), columns=["Elo"])
+    R["ID"] = R.index
     #########################################
     return R
     #-----------------
@@ -135,7 +137,7 @@ def compute_elo(G, n, K=16):
 def merge_team(T, R):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    X = T.merge(R, on="ID")
     #########################################
     return X
     #-----------------
@@ -162,7 +164,7 @@ def merge_team(T, R):
 def rank_teams_Elo(X):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    Y = X.sort_values("Elo", ascending=False)
     #########################################
     return Y
     #-----------------
