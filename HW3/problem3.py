@@ -26,7 +26,7 @@ import numpy as np
 def count_in_links(A):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    c = np.sum(A, axis=1)
     #########################################
     return c
     #-----------------
@@ -56,7 +56,7 @@ def count_in_links(A):
 def add_column_inlinks(X1, c):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    X1["Inlinks"] = c
     #########################################
     return X1
     #-----------------
@@ -89,7 +89,7 @@ def add_column_inlinks(X1, c):
 def rank_inlinks(X2):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    R2 = X2.sort_values("Inlinks", ascending=False)
     #########################################
     return R2
     #-----------------
