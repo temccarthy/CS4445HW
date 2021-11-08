@@ -31,7 +31,7 @@ import numpy as np
 def ndarray():
     #########################################
     ## INSERT YOUR CODE HERE (2 points)
-    
+    Z = np.array([[1,2,3], [4,5,6]])
     #########################################
     return Z
     #-----------------
@@ -60,7 +60,7 @@ def ndarray():
 def float_array():
     #########################################
     ## INSERT YOUR CODE HERE (2 points)
-    
+    Y = np.array([[.1, .2, .3], [.4, .5, .6]])
     #########################################
     return Y
     #-----------------
@@ -90,7 +90,7 @@ def float_array():
 def get_shape(X):
     #########################################
     ## INSERT YOUR CODE HERE (2 points)
-    
+    r,c = X.shape
     #########################################
     return r, c
     #-----------------
@@ -122,7 +122,7 @@ def get_shape(X):
 def all_one_matrix(r, c):
     #########################################
     ## INSERT YOUR CODE HERE (2 points)
-    
+    O = np.ones([r,c])
     #########################################
     return O
     #-----------------
@@ -155,7 +155,7 @@ def all_one_matrix(r, c):
 def mat_sum(X):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    s = np.sum(X, axis=0)
     #########################################
     return s
     #-----------------
@@ -193,7 +193,7 @@ def mat_sum(X):
 def mat_scalar_multiplication(X, a):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    S = np.multiply(X, a)
     #########################################
     return S
     #-----------------
@@ -232,7 +232,7 @@ def mat_scalar_multiplication(X, a):
 def matrix_vector_multiplication(X, y):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    z = np.matmul(X, y)
     #########################################
     return z
     #-----------------
@@ -263,7 +263,7 @@ def matrix_vector_multiplication(X, y):
 def find_zeros(x):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    d = np.where(x == 0)[0]
     #########################################
     return d
     #-----------------
@@ -297,7 +297,7 @@ def find_zeros(x):
 def diag_mat(x):
     #########################################
     ## INSERT YOUR CODE HERE (2 points)
-    
+    D = np.diagflat(x)
     #########################################
     return D
     #-----------------
