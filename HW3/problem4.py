@@ -27,7 +27,7 @@ import pandas as pd
 def count_out_links(A):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    d = np.sum(A, axis=0)
     #########################################
     return d
     #-----------------
@@ -56,7 +56,9 @@ def count_out_links(A):
 def remove_sink_nodes(A):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    for index, count in enumerate(count_out_links(A)):
+        if count == 0:
+            A[:, index] = 1
     #########################################
     return A
     #-----------------
@@ -90,7 +92,8 @@ def remove_sink_nodes(A):
 def compute_S(A_):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    A = remove_sink_nodes(A_)
+    S = A / count_out_links(A)
     #########################################
     return S
     #-----------------
@@ -125,7 +128,7 @@ def compute_S(A_):
 def compute_G(S, alpha):
     #########################################
     ## INSERT YOUR CODE HERE (6 points)
-    
+    G = alpha*S + (1-alpha)*np.ones_like(S)/S.shape[0]
     #########################################
     return G
     #-----------------
@@ -161,7 +164,7 @@ def compute_G(S, alpha):
 def random_walk_one_step(G, x):
     #########################################
     ## INSERT YOUR CODE HERE (6 points)
-    
+    y = G@x
     #########################################
     return y
     #-----------------
@@ -198,7 +201,7 @@ def random_walk_one_step(G, x):
 def all_close(x, y, tol=0.01):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    c = np.allclose(x,y,atol=tol)
     #########################################
     return c
     #-----------------
@@ -237,7 +240,11 @@ def all_close(x, y, tol=0.01):
 def random_walk(G, x, tol=0.01, max_steps=100):
     #########################################
     ## INSERT YOUR CODE HERE (6 points)
-    
+    for i in range(max_steps):
+        x_ = G@x
+        if all_close(x, x_, tol):
+            break
+        x = x_
     #########################################
     return x
     #-----------------
@@ -271,7 +278,7 @@ def random_walk(G, x, tol=0.01, max_steps=100):
 def add_column_pagerank(X2, x):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    X2["PageRank"] = x
     #########################################
     return X2
     #-----------------
@@ -304,7 +311,7 @@ def add_column_pagerank(X2, x):
 def rank_pages(X3):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    R3 = X3.sort_values("PageRank", ascending=False)
     #########################################
     return R3
     #-----------------
