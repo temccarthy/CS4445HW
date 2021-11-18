@@ -22,7 +22,7 @@ def Terms_and_Conditions():
     '''
     #*******************************************
     # CHANGE HERE: if you have read and agree with the term above, change "False" to "True".
-    Read_and_Agree = False
+    Read_and_Agree = True
     #*******************************************
     return Read_and_Agree
 
@@ -46,7 +46,7 @@ def Terms_and_Conditions():
 def transpose(X):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    Xt = np.transpose(X)
     #########################################
     return Xt
     #-----------------
@@ -78,7 +78,7 @@ def transpose(X):
 def identity_matrix(n):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    I = np.identity(n)
     #########################################
     return I
     #-----------------
@@ -123,7 +123,7 @@ def identity_matrix(n):
 def matrix_multiplication(X, Y):
     #########################################
     ## INSERT YOUR CODE HERE (6 points)
-    
+    Z = X@Y
     #########################################
     return Z
     #-----------------
@@ -170,7 +170,7 @@ def matrix_multiplication(X, Y):
 def matrix_inverse(X):
     #########################################
     ## INSERT YOUR CODE HERE (6 points)
-    
+    Xi = np.linalg.inv(X)
     #########################################
     return Xi
     #-----------------
@@ -204,7 +204,7 @@ def matrix_inverse(X):
 def is_missing(x):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    m = np.isnan(x)
     #########################################
     return m
     #-----------------
@@ -236,7 +236,7 @@ def is_missing(x):
 def inverse(m):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    m_ = np.invert(m)
     #########################################
     return m_
     #-----------------
@@ -272,7 +272,7 @@ def inverse(m):
 def subset_vector(x, m):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    x_m = x[m]
     #########################################
     return x_m
     #-----------------
@@ -311,7 +311,7 @@ def subset_vector(x, m):
 def subset_matrix(X, m):
     #########################################
     ## INSERT YOUR CODE HERE (3 points)
-    
+    X_m = X[m, :]
     #########################################
     return X_m
     #-----------------
