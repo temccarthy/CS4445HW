@@ -26,7 +26,7 @@ import numpy as np
 def least_square(X, y):
     #########################################
     ## INSERT YOUR CODE HERE (10 points)
-    
+    w = np.linalg.inv(X.T@X)@X.T@y
     #########################################
     return w
     #-----------------
@@ -57,7 +57,7 @@ def least_square(X, y):
 def ridge_regression(X, y, a=0.0001):
     #########################################
     ## INSERT YOUR CODE HERE (10 points)
-    
+    w = np.linalg.inv(X.T@X + a*np.identity(X.shape[1]))@X.T@y
     #########################################
     return w
     #-----------------
