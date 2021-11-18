@@ -41,7 +41,8 @@ from problem2 import *
 def extract_user_j(R_j, I):
     #########################################
     ## INSERT YOUR CODE HERE (7 points)
-    
+    mask = np.invert(np.isnan(R_j))
+    X, y = I[mask], R_j[mask]
     #########################################
     return X, y
     #-----------------
@@ -73,7 +74,7 @@ def extract_user_j(R_j, I):
 def train_user_j(X, y, a=1e-05):
     #########################################
     ## INSERT YOUR CODE HERE (7 points)
-    
+    Uj = ridge_regression(X, y, a)
     #########################################
     return Uj
     #-----------------
@@ -139,7 +140,11 @@ def train_user_j(X, y, a=1e-05):
 def update_U(R, I, a=1e-05):
     #########################################
     ## INSERT YOUR CODE HERE (7 points)
-    
+    U = np.empty((R.shape[1], I.shape[1]))
+    for i in range(R.shape[1]):
+        X, y = extract_user_j(R[:, i], I)
+        U_row = train_user_j(X, y, a)
+        U[i, :] = U_row
     #########################################
     return U
     #-----------------
@@ -187,7 +192,7 @@ def update_U(R, I, a=1e-05):
 def extract_item_i(Ri_, U):
     #########################################
     ## INSERT YOUR CODE HERE (7 points)
-    
+    X, y = extract_user_j(Ri_, U)
     #########################################
     return X, y
     #-----------------
@@ -218,7 +223,7 @@ def extract_item_i(Ri_, U):
 def train_item_i(X, y, a=1e-05):
     #########################################
     ## INSERT YOUR CODE HERE (7 points)
-    
+    Ii = ridge_regression(X, y, a)
     #########################################
     return Ii
     #-----------------
@@ -250,7 +255,7 @@ def train_item_i(X, y, a=1e-05):
 def update_I(R, U, a=1e-05):
     #########################################
     ## INSERT YOUR CODE HERE (7 points)
-    
+    I = update_U(R.T, U, a)
     #########################################
     return I
     #-----------------
@@ -289,7 +294,8 @@ def collaborative_filtering(R, k=5, a=1e-05, n_steps=20):
     for _ in range(n_steps): # repeat n_steps
         #########################################
         ## INSERT YOUR CODE HERE (8 points)
-    
+        U = update_U(R, I, a)
+        I = update_I(R, U, a)
         #########################################
     return I, U
     #-----------------
