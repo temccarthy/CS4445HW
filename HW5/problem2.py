@@ -25,7 +25,7 @@ from model import LogisticRegression
 def compute_z(x, m):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    z = m(x)
     #########################################
     return z
     #-----------------
@@ -60,7 +60,7 @@ def compute_z(x, m):
 def compute_L(z, y):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    L = th.nn.BCEWithLogitsLoss()(z, y)
     #########################################
     return L
     #-----------------
@@ -92,7 +92,8 @@ def compute_L(z, y):
 def update_parameters(optimizer):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    optimizer.step()
+    optimizer.zero_grad()
     #########################################
     #-----------------
     '''  
@@ -134,7 +135,10 @@ def train(data_loader, p, alpha=0.001, n_epoch=100):
             y=mini_batch[1] # the labels of the samples in a mini-batch
             #########################################
             ## INSERT YOUR CODE HERE (5 points)
-    
+            z = compute_z(x, m)
+            L = compute_L(z, y)
+            L.backward()
+            update_parameters(optimizer)
             #########################################
     return m
     #-----------------
