@@ -44,7 +44,7 @@ def Terms_and_Conditions():
 def compute_z(x, w, b):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    z = b + np.sum(np.multiply(x, w))
     #########################################
     return z
     #-----------------
@@ -73,7 +73,7 @@ def compute_z(x, w, b):
 def compute_dz_db():
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    dz_db = 1
     #########################################
     return dz_db
     #-----------------
@@ -104,7 +104,7 @@ def compute_dz_db():
 def compute_dz_dw(x):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    dz_dw = x
     #########################################
     return dz_dw
     #-----------------
@@ -139,7 +139,7 @@ def compute_dz_dw(x):
 def compute_L(z, y):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    L = np.log(1+np.exp(z)) - y*z if z<1000 else z*(1-y)
     #########################################
     return L
     #-----------------
@@ -171,7 +171,7 @@ def compute_L(z, y):
 def compute_dL_dz(z, y):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    dL_dz = -y if z < -200 else 1/(1+np.exp(-z)) - y
     #########################################
     return dL_dz
     #-----------------
@@ -203,7 +203,7 @@ def compute_dL_dz(z, y):
 def compute_dL_db(dL_dz, dz_db):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    dL_db = dL_dz * dz_db
     #########################################
     return dL_db
     #-----------------
@@ -235,7 +235,7 @@ def compute_dL_db(dL_dz, dz_db):
 def compute_dL_dw(dL_dz, dz_dw):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    dL_dw = dL_dz * dz_dw
     #########################################
     return dL_dw
     #-----------------
@@ -271,7 +271,10 @@ def compute_dL_dw(dL_dz, dz_dw):
 def backward(x, y, z):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    dL_dz = compute_dL_dz(z, y)
+    dz_db = compute_dz_db()
+    dz_dw = compute_dz_dw(x)
+    dL_dw, dL_db = compute_dL_dw(dL_dz, dz_dw), compute_dL_db(dL_dz, dz_db)
     #########################################
     return dL_dw, dL_db
     #-----------------
@@ -304,7 +307,7 @@ def backward(x, y, z):
 def update_b(b, dL_db, alpha=0.001):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    b = b - alpha*dL_db
     #########################################
     return b
     #-----------------
@@ -337,7 +340,7 @@ def update_b(b, dL_db, alpha=0.001):
 def update_w(w, dL_dw, alpha=0.001):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    w = w - alpha*dL_dw
     #########################################
     return w
     #-----------------
@@ -382,7 +385,9 @@ def train(X, Y, alpha=0.001, n_epoch=100):
             y=Y[i] # the label of the i-th random sample
             #########################################
             ## INSERT YOUR CODE HERE (5 points)
-    
+            z = compute_z(x, w, b)
+            dL_dw, dL_db = backward(x, y, z)
+            w, b = update_w(w, dL_dw, alpha), update_b(b, dL_db, alpha)
             #########################################
     return w, b
     #-----------------
@@ -415,7 +420,7 @@ def train(X, Y, alpha=0.001, n_epoch=100):
 def predict(x, w, b):
     #########################################
     ## INSERT YOUR CODE HERE (5 points)
-    
+    y = compute_z(x, w, b) >= 0
     #########################################
     return y
     #-----------------
